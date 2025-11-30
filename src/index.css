@@ -18,7 +18,7 @@
 
   --breakpoint-xs: 480px;
 
-  --background-image-hero-pattern: url("/hero-bg.png");
+  --background-image-hero-pattern: url("/BG.png");
 }
 
 @layer base {
@@ -74,7 +74,7 @@
     }
 
     & ul li img {
-      @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+      @apply w-[127px] h-[133px] rounded-lg object-cover -ml-3.5;
     }
   }
 
