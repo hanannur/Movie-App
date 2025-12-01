@@ -8,7 +8,7 @@ import { useDebounce } from 'react-use';
 import { updateSearchCount, getTrendingSearches } from './appwrite';
 import MovieCard from './components/MovieCard';
 
-const API_BASE_URL = 'https://api.themoviedb.org/3';
+const API_BASE_URL = 'https://api.themoviedb.org/3';                                                                                                                                                          
 const API_KEY = import.meta.env.VITE_API_TOKEN;
 
 const API_OPTIONS = {
@@ -46,6 +46,7 @@ function App() {
             }
 
             const data = await response.json();
+            console.log(data);
             setMovieList(data.results || []);
 
             if (query && data.results.length > 0) {
