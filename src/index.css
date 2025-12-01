@@ -21,6 +21,36 @@
   --background-image-hero-pattern: url("./assets/BG.png");
 }
 
+/* Default: Desktop */
+.logo {
+    width: 160px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .logo {
+        width: 130px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .logo {
+        width: 110px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+    .logo {
+        width: 90px;
+    }
+}
+
+
 @layer base {
   body {
     font-family: "DM Sans", serif;

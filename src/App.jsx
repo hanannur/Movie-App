@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import poster from './assets/No-Poster.png';
-import background from './assets/BG.png';
 import hero from './assets/hero-img.png';
 import Search from './components/search';
+import logo from './assets/logo.png';
 import Spinner from './components/Spinner'; 
 import { useDebounce } from 'react-use';
 import { updateSearchCount, getTrendingMovies } from './appwrite';
@@ -82,6 +81,7 @@ function App() {
             <div className="pattern" >
                 <div className="wrapper">
                     <header>
+                        <img src ={logo} className="logo"/>
                         <img src={hero} />
                         <h1>
                             Find <span className="text-gradient">Movies</span> You'll Enjoy Without Hassle
