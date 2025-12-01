@@ -79,13 +79,14 @@ function App() {
 
     return (
         <main>
-            <div className="pattern">
+            <div className="pattern" >
                 <div className="wrapper">
                     <header>
                         <img src={hero} />
                         <h1>
                             Find <span className="text-gradient">Movies</span> You'll Enjoy Without Hassle
                         </h1>
+
                         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                     </header>
 
@@ -119,7 +120,7 @@ function App() {
                         )}
                     </section>
                 </div>
-            </div>
+           </div>
         </main>
     );
 }

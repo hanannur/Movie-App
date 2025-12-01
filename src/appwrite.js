@@ -13,10 +13,11 @@ const database = new Databases(client);
 
 export const updateSearchCount=async(searchTerm , movie)=>{
     try{
+        const normalizedTerm = searchTerm.trim().toLowerCase(); 
         const result = await database.listDocuments(
             DATABASE_ID,
             COLLECTION_ID,
-            [Query.equal('searchTerm', searchTerm)
+            [Query.equal('searchTerm', normalizedTerm)
         ]
         );
             if(result.documents.length>0){
@@ -35,7 +36,7 @@ export const updateSearchCount=async(searchTerm , movie)=>{
                     COLLECTION_ID,
                     ID.unique(),
                     {
-                        searchTerm,
+                        searchTerm:normalizedTerm,
                         count:1,
                         movie_id:movie.id,
                         poster_url:`https://image.tmdb.org/t/p/w500${movie.poster_path}`,
