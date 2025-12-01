@@ -5,7 +5,7 @@ import hero from './assets/hero-img.png';
 import Search from './components/search';
 import Spinner from './components/Spinner'; 
 import { useDebounce } from 'react-use';
-import { updateSearchCount, getTrendingSearches } from './appwrite';
+import { updateSearchCount, getTrendingMovies } from './appwrite';
 import MovieCard from './components/MovieCard';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';                                                                                                                                                          
@@ -26,7 +26,7 @@ function App() {
     const [movieList, setMovieList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [debouncedSearchTerm, setDebouncedTerm] = useState('');
-    const [trendingSearches, setTrendingSearches] = useState([]);
+    const [trendingMovies, setTrendingMovies] = useState([]);
 
     useDebounce(() => setDebouncedTerm(searchTerm), 500, [searchTerm]);
 
@@ -62,16 +62,16 @@ function App() {
 
     const loadTrendingMovies = async () => {
         try {
-            const movies = await getTrendingSearches();
-            setTrendingSearches(movies);
+            const movies = await getTrendingMovies();
+            setTrendingMovies(movies);
         } catch (error) {
-            console.error('Error loading trending searches:', error);
+            console.error('Error loading trending movies:', error);
         }
     };
 
     useEffect(() => {
-        fetchMovies(searchTerm);
-    }, [searchTerm]);
+        fetchMovies(debouncedSearchTerm);
+    }, [debouncedSearchTerm]);
 
     useEffect(() => {
         loadTrendingMovies();
@@ -89,11 +89,11 @@ function App() {
                         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
                     </header>
 
-                    {trendingSearches.length > 0 && (
+                    {trendingMovies.length > 0 && (
                         <section className="trending">
                             <h2>Trending Movies</h2>
                             <ul>
-                                {trendingSearches.map((movie, index) => (
+                                {trendingMovies.map((movie, index) => (
                                     <li key={movie.$id}>
                                         <p>{index + 1}</p>
                                         <img src={movie.poster_url} alt={movie.title} />
